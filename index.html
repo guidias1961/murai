@@ -4,24 +4,63 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Murai $MURAI • Muraiverse on Basechain</title>
-  <meta name="theme-color" content="#0a0c10" />
-  <meta name="description" content="Murai $MURAI — Samurai pigeons teaching crypto on Basechain. Muraiverse interactive NFT site." />
-  <!-- Tailwind via CDN to avoid any build step -->
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Murai $MURAI - Samurai pigeons teaching crypto on Basechain. Muraiverse interactive NFT site." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --ink:#e7e7e7; --bg:#0a0c10; }
-    body { background: var(--bg); color: var(--ink); }
-    .neon-on { filter: contrast(110%) saturate(125%); }
-    .marquee { white-space: nowrap; animation: marquee 22s linear infinite; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    /* Modal scroll fix */
-    .no-scroll { overflow: hidden; }
+    :root{
+      --bg:#ffffff;
+      --ink:#0b1220;
+      --panel:#ffffff;
+      --baseBlue:#87b3ff;         /* azul claro Base */
+      --baseBlueStrong:#4f8dff;   /* azul médio */
+      --line: rgba(79,141,255,.35);
+      --shadow: 0 10px 24px rgba(79,141,255,.18);
+      --notch: 12px;
+    }
+    body{ background:var(--bg); color:var(--ink); }
+    .marquee{ white-space:nowrap; animation:marquee 22s linear infinite; }
+    @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* Notched cantos semicortados + sombra flutuante */
+    .notch{
+      position:relative; background:var(--panel);
+      outline:1px solid var(--line); box-shadow:var(--shadow);
+      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch),
+                        100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%,
+                        var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.65rem 1rem; font-weight:600; letter-spacing:.3px;
+      background:linear-gradient(180deg,var(--baseBlue) 0%, var(--baseBlueStrong) 100%);
+      color:#0b1220; outline:1px solid var(--line); box-shadow:var(--shadow);
+      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch),
+                        100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%,
+                        var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
+      transition:transform .15s ease;
+    }
+    .btn:hover{ transform:translateY(-2px); }
+
+    /* remover qualquer arredondamento do Tailwind */
+    *[class*="rounded-"]{ border-radius:0 !important; }
+
+    .cut-img{ background:#fff; }
+    .cut-img img{ object-fit:contain; width:100%; height:100%; }
+
+    .grid-card{ background:linear-gradient(180deg,#f4f8ff 0%, #ffffff 100%); }
+
+    /* rótulo das thumbs */
+    .thumb-badge{
+      background:rgba(135,179,255,.85);
+      color:#0b1220;
+    }
   </style>
 </head>
 <body class="min-h-screen">
-  <!-- Ticker / Marquee -->
-  <div class="sticky top-0 z-40 bg-black/60 backdrop-blur border-b border-white/10">
-    <div class="marquee text-xs py-2">
+  <!-- Ticker -->
+  <div class="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-[var(--line)]">
+    <div class="marquee text-xs py-2 text-[var(--ink)]">
       <span class="mx-6">Basechain dojo open</span>
       <span class="mx-6">$MURAI is not financial advice</span>
       <span class="mx-6">Sensei only accepts payments in laughter</span>
@@ -30,43 +69,41 @@
   </div>
 
   <main class="max-w-7xl mx-auto p-4 md:p-8 space-y-10">
-    <!-- Header / Hero -->
-    <header class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6 md:p-10 ring-1 ring-white/10">
-      <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-cyan-500/20 blur-3xl"></div>
-      <div class="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+    <!-- Hero -->
+    <header class="relative overflow-hidden notch p-6 md:p-10">
+      <div class="absolute inset-0 pointer-events-none" style="background:
+        radial-gradient(600px 200px at 10% -10%, rgba(135,179,255,.25), transparent),
+        radial-gradient(600px 200px at 110% 120%, rgba(79,141,255,.28), transparent)"></div>
       <div class="relative flex flex-col md:flex-row items-center gap-6">
-        <button id="logoBtn" class="shrink-0"><img src="logo.png" alt="$MURAI logo" class="w-28 h-28 md:w-36 md:h-36 object-contain drop-shadow-[0_0_30px_rgba(0,255,200,.3)]" /></button>
+        <button id="logoBtn" class="shrink-0 notch cut-img w-28 h-28 md:w-36 md:h-36 p-2">
+          <img src="logo.png" alt="$MURAI logo">
+        </button>
         <div class="flex-1 space-y-2">
           <h1 class="text-4xl md:text-6xl font-black tracking-tight">Murai $MURAI</h1>
-          <p class="text-white/70 max-w-2xl">Welcome to the Muraiverse. Samurai pigeons teaching crypto with humor and discipline. Deployed on Basechain. Learn in the dojo. Meme on the feed. Liquidity in our veins.</p>
-          <p id="tagline" class="text-cyan-300/90 text-sm">Alpha dojo, no whining.</p>
+          <p class="text-[var(--ink)]/70 max-w-2xl">
+            Welcome to the Muraiverse. Samurai pigeons teaching crypto with humor and discipline.
+            Deployed on Basechain. Learn in the dojo. Meme on the feed. Liquidity in our veins.
+          </p>
+          <p id="tagline" class="text-[var(--ink)]/70 text-sm">Alpha dojo, no whining.</p>
         </div>
-        <div class="flex gap-2">
-          <a href="#buy" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold">buy</a>
-          <button id="toggleNeon" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">turn neon on</button>
+        <div class="flex flex-wrap gap-2">
+          <a href="#buy" class="btn">buy</a>
+          <a href="https://t.me/" target="_blank" class="btn" aria-label="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b1220"><path d="M9.04 15.29 8.9 19c.32 0 .45-.14.61-.31l1.46-1.41 3.03 2.23c.56.31.96.15 1.1-.52l2-9.39c.2-.86-.33-1.2-.86-1l-12 4.63c-.82.32-.81.78-.14.99l3.06.96 7.11-4.49c.33-.21.63-.1.38.11"/></svg>
+            Telegram
+          </a>
+          <a href="https://x.com/" target="_blank" class="btn" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b1220"><path d="M4 3h4l4.5 6.5L17 3h3l-6.5 9L20 21h-4l-5-7.5L7 21H4l6.6-9z"/></svg>
+            Twitter
+          </a>
         </div>
       </div>
     </header>
 
-    <!-- Sensei's Chalkboard -->
-    <section class="grid md:grid-cols-2 gap-6 items-start">
-      <div class="space-y-4">
-        <h2 class="text-2xl font-bold">Sensei's Chalkboard</h2>
-        <canvas id="chalkboard" class="w-full h-[420px] rounded-2xl shadow-inner"></canvas>
-        <p class="text-white/70 text-sm">The board writes by itself while the market breathes. The candles are illustrative; the class is real. Press <strong>M</strong> for meme mode.</p>
-      </div>
-      <div class="space-y-4">
-        <h2 class="text-2xl font-bold">Muraiverse Lore</h2>
-        <div class="rounded-2xl ring-1 ring-white/10 bg-white/5 p-4 leading-relaxed">
-          <p id="loreP">Loading wisdom…</p>
-          <p class="mt-3 text-sm text-white/80" id="loreTag">—</p>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <a id="buy" href="#" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold">buy on Basechain</a>
-          <a href="#" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">view contract</a>
-          <a href="#gallery" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">open gallery</a>
-        </div>
-      </div>
+    <!-- Dojo Video substitui completamente o antigo Chalkboard -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold">Dojo Video</h2>
+      <video src="1.mp4" class="w-full aspect-video notch object-cover" controls muted autoplay loop playsinline></video>
     </section>
 
     <!-- Gallery -->
@@ -74,8 +111,8 @@
       <div class="flex items-center justify-between">
         <h3 class="text-xl font-semibold tracking-tight">Dojo Gallery</h3>
         <div class="flex gap-2">
-          <button id="shuffleBtn" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition">shuffle</button>
-          <button id="randomBtn" class="px-3 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold">summon random</button>
+          <button id="shuffleBtn" class="btn" style="background:transparent;color:var(--ink)">shuffle</button>
+          <button id="randomBtn" class="btn">summon random</button>
         </div>
       </div>
 
@@ -83,24 +120,26 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pt-10 pb-16 text-center text-white/50">
+    <footer class="pt-10 pb-16 text-center text-[var(--ink)]/60">
       <p>Murai $MURAI • Muraiverse on Basechain</p>
       <p class="text-xs">Generative art with a handmade vibe. This site is 100% functional meme.</p>
     </footer>
   </main>
 
   <!-- Modal -->
-  <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden grid place-items-center p-4" aria-hidden="true">
-    <div class="relative max-w-5xl w-full bg-neutral-900 rounded-3xl ring-1 ring-white/10 p-4 md:p-6">
-      <button id="closeModal" class="absolute top-3 right-3 bg-white/10 hover:bg-white/20 rounded-full px-3 py-1">close</button>
+  <div id="modal" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-50 hidden grid place-items-center p-4" aria-hidden="true">
+    <div class="relative max-w-5xl w-full notch p-4 md:p-6">
+      <button id="closeModal" class="btn" style="position:absolute;top:12px;right:12px;background:transparent;color:var(--ink)">close</button>
       <div class="grid md:grid-cols-2 gap-6 items-center">
-        <img id="modalImg" src="" alt="nft" class="w-full h-full object-contain rounded-2xl" />
+        <div class="notch cut-img h-full min-h-[320px]"><img id="modalImg" src="" alt="nft" class="w-full h-full object-contain" /></div>
         <div class="space-y-3">
           <h4 id="modalTitle" class="text-2xl font-bold">Form 01</h4>
-          <p id="modalLore" class="text-white/80 text-sm">This Murai form embodies a Muraiverse archetype. Collect, compare, and create combos with social rarities. Click outside to close.</p>
+          <p id="modalLore" class="text-[var(--ink)]/70 text-sm">
+            This Murai form embodies a Muraiverse archetype. Collect, compare, and create combos with social rarities. Click outside to close.
+          </p>
           <div class="flex gap-2">
-            <a href="#buy" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold">buy later</a>
-            <button id="mentalShot" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">take mental screenshot</button>
+            <a href="#buy" class="btn">buy later</a>
+            <button id="mentalShot" class="btn" style="background:transparent;color:var(--ink)">take mental screenshot</button>
           </div>
         </div>
       </div>
@@ -108,15 +147,15 @@
   </div>
 
   <!-- Preloader -->
-  <div id="preloader" class="fixed inset-0 grid place-items-center bg-black/80">
+  <div id="preloader" class="fixed inset-0 grid place-items-center bg-white/90">
     <div class="text-center">
-      <div class="w-10 h-10 border-2 border-white/20 border-t-white/80 rounded-full animate-spin mx-auto mb-3"></div>
-      <p class="text-white/70">loading dojo</p>
+      <div class="w-8 h-8 border-2 border-[var(--line)] border-t-[var(--baseBlueStrong)] animate-spin notch mx-auto mb-3"></div>
+      <p class="text-[var(--ink)]/70">loading dojo</p>
     </div>
   </div>
 
   <script>
-    // ---------- Data (English) ----------
+    /* Data */
     const TAGLINES = [
       "Alpha dojo, no whining.",
       "Basechain or nothing.",
@@ -127,154 +166,81 @@
       "Shh, the pigeon is teaching DeFi.",
       "Samurai honor, degen volatility.",
       "Pigeon with a katana and a PnL sheet.",
-      "You called? Sensei drops alpha on the chalkboard."
+      "You called? Sensei drops alpha on the board."
     ];
-
     const LORE = [
       "Murai was born in the alley where hash meets honor.",
       "Every Murai variation is a parallel universe with different leverage.",
-      "The dojo lives on Basechain and the chalkboard is on-chain.",
+      "The dojo lives on Basechain and the board is on-chain.",
       "Apprentices receive quests, raids, and utility memes.",
       "The katana cuts fees. The wings carry liquidity.",
-      "The pigeon-sensei watches wallets and rewards discipline.",
+      "The pigeon sensei watches wallets and rewards discipline.",
       "Try to rug and you get the eraser to the forehead."
     ];
-
     const NFT_COUNT = 20;
     const NFT_PATHS = Array.from({ length: NFT_COUNT }, (_, i) => `nft${i+1}.png`);
 
-    // ---------- Utilities ----------
-    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-
-    // ---------- Tagline rotator ----------
+    /* Tagline rotator */
     const taglineEl = document.getElementById('tagline');
     let tagIdx = 0;
-    setInterval(() => { tagIdx = (tagIdx+1) % TAGLINES.length; taglineEl.textContent = TAGLINES[tagIdx]; }, 2500);
+    setInterval(()=>{ tagIdx=(tagIdx+1)%TAGLINES.length; taglineEl.textContent=TAGLINES[tagIdx]; },2500);
 
-    // ---------- Lore ----------
+    /* Lore */
+    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
     function refreshLore(){
-      document.getElementById('loreP').textContent = pick(LORE);
-      document.getElementById('loreTag').textContent = pick(TAGLINES);
+      const el = document.getElementById('loreP');
+      const tag = document.getElementById('loreTag');
+      if(el) el.textContent = pick(LORE);
+      if(tag) tag.textContent = "-";
     }
 
-    // ---------- Chalkboard ----------
-    const c = document.getElementById('chalkboard');
-    const ctx = c.getContext('2d');
-    let progress = 0, raf = 0;
-
-    function randFactory(seed){ let r = seed; return function(){ r = (r * 48271) % 2147483647; return r / 2147483647; }; }
-
-    function drawBoard(){
-      if(!ctx) return;
-      const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
-      const W = c.clientWidth * DPR; const H = c.clientHeight * DPR; c.width = W; c.height = H;
-      // Background
-      ctx.fillStyle = '#223b2f'; ctx.fillRect(0,0,W,H);
-      // Frame
-      ctx.fillStyle = '#8b5a2b';
-      ctx.fillRect(0,0,W,20*DPR); ctx.fillRect(0,H-20*DPR,W,20*DPR); ctx.fillRect(0,0,20*DPR,H); ctx.fillRect(W-20*DPR,0,20*DPR,H);
-      // Text
-      const pad = 50*DPR; const fontSize = Math.min(96*DPR, W/8);
-      ctx.save(); ctx.beginPath(); ctx.rect(pad,pad,(W-pad*2)*progress,fontSize+10*DPR); ctx.clip();
-      ctx.font = `bold ${fontSize}px system-ui, -apple-system, Segoe UI, Roboto`;
-      ctx.fillStyle = '#f2f2f2'; ctx.shadowColor = 'rgba(255,255,255,.6)'; ctx.shadowBlur = 4*DPR;
-      ctx.fillText('BASECHAIN', pad, pad+fontSize);
-      ctx.restore();
-      // Chart
-      const chartX = pad, chartY = pad + fontSize + 50*DPR;
-      const chartW = W - pad*2, chartH = H - chartY - pad;
-      const candles = 36, cw = chartW / candles; const r = randFactory(1337);
-      ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.lineWidth = 1*DPR;
-      for(let i=0;i<=6;i++){ const y = chartY + (i*chartH)/6; ctx.beginPath(); ctx.moveTo(chartX,y); ctx.lineTo(chartX+chartW,y); ctx.stroke(); }
-      for(let i=0;i<candles;i++){
-        const base = chartY + chartH*0.1 + r()*chartH*0.8;
-        const high = base - r()*48*DPR; const low = base + r()*48*DPR;
-        const open = base + (r()-0.5)*24*DPR; const close = base + (r()-0.5)*24*DPR;
-        const x = chartX + i*cw + cw*0.5;
-        ctx.strokeStyle = '#e6e6e6'; ctx.lineWidth = 2*DPR; ctx.beginPath(); ctx.moveTo(x,high); ctx.lineTo(x,low); ctx.stroke();
-        ctx.fillStyle = close < open ? '#2ecc71' : '#e74c3c';
-        const y = Math.min(open, close); const h = Math.max(2*DPR, Math.abs(open - close));
-        ctx.fillRect(x - cw*0.25, y, cw*0.5, h);
-      }
-      ctx.fillStyle = '#f2f2f2'; ctx.font = `${14*DPR}px system-ui`; ctx.fillText('basechain liquidity dojo', chartX, chartY - 12*DPR);
-    }
-
-    function step(){ progress = Math.min(1, progress + 0.01); drawBoard(); raf = requestAnimationFrame(step); }
-    window.addEventListener('resize', drawBoard);
-
-    // ---------- Gallery ----------
-    const grid = document.getElementById('grid');
-    let order = [...NFT_PATHS];
-
+    /* Gallery */
+    const grid=document.getElementById('grid'); let order=[...NFT_PATHS];
     function renderGrid(){
-      grid.innerHTML = '';
-      order.forEach(src => {
-        const btn = document.createElement('button');
-        btn.className = 'group relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 ring-1 ring-white/10';
-        btn.innerHTML = `<img src="${src}" alt="${src}" class="absolute inset-0 w-full h-full object-contain p-3 group-hover:scale-105 transition" />\
-          <span class="absolute bottom-2 right-2 text-[10px] uppercase tracking-widest bg-black/60 px-2 py-1 rounded-md">${src.replace('.png','')}</span>`;
-        btn.addEventListener('click', () => openModal(src));
+      grid.innerHTML='';
+      order.forEach(src=>{
+        const btn=document.createElement('button');
+        btn.className='group relative aspect-square overflow-hidden notch grid-card';
+        btn.innerHTML=`
+          <img src="${src}" alt="${src}" class="absolute inset-0 w-full h-full object-contain p-3 transition group-hover:scale-105" />
+          <span class="thumb-badge absolute bottom-2 right-2 text-[10px] uppercase tracking-widest px-2 py-1">${src.replace('.png','')}</span>`;
+        btn.addEventListener('click',()=>openModal(src));
         grid.appendChild(btn);
       });
     }
+    function shuffle(){ order = order.sort(()=>Math.random()-.5); renderGrid(); }
+    function summonRandom(){ const src=order[Math.floor(Math.random()*order.length)]; openModal(src); }
 
-    function shuffle(){ order = order.sort(() => Math.random() - 0.5); renderGrid(); }
-    function summonRandom(){ const src = order[Math.floor(Math.random()*order.length)]; openModal(src); }
-
-    // ---------- Modal ----------
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalLore = document.getElementById('modalLore');
-
+    /* Modal */
+    const modal=document.getElementById('modal');
+    const modalImg=document.getElementById('modalImg');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalLore=document.getElementById('modalLore');
     function openModal(src){
-      modalImg.src = src;
-      const num = (src.match(/\d+/) || ['1'])[0].padStart(2,'0');
-      modalTitle.textContent = `Form ${num}`;
-      modalLore.textContent = `${pick(LORE)} ${pick(TAGLINES)}`;
-      modal.classList.remove('hidden');
-      document.body.classList.add('no-scroll');
+      modalImg.src=src;
+      const num=(src.match(/\d+/)||['1'])[0].padStart(2,'0');
+      modalTitle.textContent=`Form ${num}`;
+      modalLore.textContent=`${pick(LORE)} ${pick(TAGLINES)}`;
+      modal.classList.remove('hidden'); document.body.classList.add('no-scroll');
     }
     function closeModal(){ modal.classList.add('hidden'); document.body.classList.remove('no-scroll'); }
-
     document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-    document.getElementById('mentalShot').addEventListener('click', () => alert('mental screenshot saved'));
+    modal.addEventListener('click',(e)=>{ if(e.target===modal) closeModal(); });
+    document.getElementById('mentalShot').addEventListener('click',()=>alert('mental screenshot saved'));
 
-    // ---------- Neon mode & Easter eggs ----------
-    const neonBtn = document.getElementById('toggleNeon');
-    function toggleNeon(){ document.body.classList.toggle('neon-on'); neonBtn.textContent = document.body.classList.contains('neon-on') ? 'turn neon off' : 'turn neon on'; }
-    neonBtn.addEventListener('click', toggleNeon);
-
-    // Konami Code: up up down down left right left right b a
-    const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let idx = 0;
-    window.addEventListener('keydown', (e) => {
-      const key = (e.key || '').toString();
-      if(key === seq[idx]){ idx++; if(idx === seq.length){ toggleNeon(); idx = 0; } }
-      else { idx = 0; }
-      if(key.toLowerCase() === 'm') toggleNeon();
-    });
-
-    // Click logo -> open random NFT
+    /* Logo click -> random NFT */
     document.getElementById('logoBtn').addEventListener('click', summonRandom);
 
-    // Buttons
+    /* Buttons */
     document.getElementById('shuffleBtn').addEventListener('click', shuffle);
     document.getElementById('randomBtn').addEventListener('click', summonRandom);
 
-    // ---------- Preload images ----------
-    function preload(urls){
-      return Promise.all(urls.map(u => new Promise(res => { const im = new Image(); im.onload = im.onerror = () => res(); im.src = u; }))); }
-
-    // ---------- Init ----------
+    /* Preload & init */
+    function preload(urls){ return Promise.all(urls.map(u=>new Promise(res=>{ const im=new Image(); im.onload=im.onerror=()=>res(); im.src=u; }))); }
     (async function init(){
-      refreshLore();
-      renderGrid();
-      drawBoard();
-      raf = requestAnimationFrame(step);
+      refreshLore(); renderGrid();
       await preload(['logo.png', ...NFT_PATHS]);
-      document.getElementById('preloader').style.display = 'none';
+      document.getElementById('preloader').style.display='none';
     })();
   </script>
 </body>
