@@ -3,54 +3,71 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Murai $MURAI • Muraiverse on Basechain</title>
+  <title>WuRai $WURAI • 武睿 Wise Warrior on Basechain</title>
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Murai $MURAI - Samurai pigeons teaching crypto on Basechain. Muraiverse interactive NFT site." />
+  <meta name="description" content="WuRai $WURAI - 武睿 The Wise Warrior. Where martial prowess meets crypto intelligence on Basechain." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
       --bg:#ffffff;
       --ink:#0b1220;
       --panel:#ffffff;
-      --baseBlue:#87b3ff;         /* azul claro Base */
-      --baseBlueStrong:#4f8dff;   /* azul médio */
+      --baseBlue:#87b3ff;
+      --baseBlueStrong:#4f8dff;
       --line: rgba(79,141,255,.35);
       --shadow: 0 10px 24px rgba(79,141,255,.18);
       --notch: 12px;
     }
-    body{ background:var(--bg); color:var(--ink); }
-    .marquee{ white-space:nowrap; animation:marquee 22s linear infinite; }
-    @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-    /* Notched cantos semicortados + sombra flutuante */
+    body{
+      background:var(--bg);
+      color:var(--ink);
+    }
+    .marquee{
+      white-space:nowrap;
+      animation:marquee 22s linear infinite;
+    }
+    @keyframes marquee{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
     .notch{
-      position:relative; background:var(--panel);
-      outline:1px solid var(--line); box-shadow:var(--shadow);
-      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch),
-                        100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%,
-                        var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
+      position:relative;
+      background:var(--panel);
+      outline:1px solid var(--line);
+      box-shadow:var(--shadow);
+      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
     }
     .btn{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.65rem 1rem; font-weight:600; letter-spacing:.3px;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.65rem 1rem;
+      font-weight:600;
+      letter-spacing:.3px;
       background:linear-gradient(180deg,var(--baseBlue) 0%, var(--baseBlueStrong) 100%);
-      color:#0b1220; outline:1px solid var(--line); box-shadow:var(--shadow);
-      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch),
-                        100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%,
-                        var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
+      color:#0b1220;
+      outline:1px solid var(--line);
+      box-shadow:var(--shadow);
+      clip-path:polygon(var(--notch) 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
       transition:transform .15s ease;
     }
-    .btn:hover{ transform:translateY(-2px); }
-
-    /* remover qualquer arredondamento do Tailwind */
-    *[class*="rounded-"]{ border-radius:0 !important; }
-
-    .cut-img{ background:#fff; }
-    .cut-img img{ object-fit:contain; width:100%; height:100%; }
-
-    .grid-card{ background:linear-gradient(180deg,#f4f8ff 0%, #ffffff 100%); }
-
-    /* rótulo das thumbs */
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+    *[class*="rounded-"]{
+      border-radius:0 !important;
+    }
+    .cut-img{
+      background:#fff;
+    }
+    .cut-img img{
+      object-fit:contain;
+      width:100%;
+      height:100%;
+    }
+    .grid-card{
+      background:linear-gradient(180deg,#f4f8ff 0%, #ffffff 100%);
+    }
     .thumb-badge{
       background:rgba(135,179,255,.85);
       color:#0b1220;
@@ -61,30 +78,27 @@
   <!-- Ticker -->
   <div class="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-[var(--line)]">
     <div class="marquee text-xs py-2 text-[var(--ink)]">
-      <span class="mx-6">Basechain dojo open</span>
-      <span class="mx-6">$MURAI is not financial advice</span>
-      <span class="mx-6">Sensei only accepts payments in laughter</span>
-      <span class="mx-6">Click the logo for random luck</span>
+      <span class="mx-6">武睿 dojo open</span>
+      <span class="mx-6">$WURAI is not financial advice</span>
+      <span class="mx-6">Wu teaches combat, Rui teaches wisdom</span>
+      <span class="mx-6">Click the logo for enlightenment</span>
     </div>
   </div>
 
   <main class="max-w-7xl mx-auto p-4 md:p-8 space-y-10">
     <!-- Hero -->
     <header class="relative overflow-hidden notch p-6 md:p-10">
-      <div class="absolute inset-0 pointer-events-none" style="background:
-        radial-gradient(600px 200px at 10% -10%, rgba(135,179,255,.25), transparent),
-        radial-gradient(600px 200px at 110% 120%, rgba(79,141,255,.28), transparent)"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(600px 200px at 10% -10%, rgba(135,179,255,.25), transparent), radial-gradient(600px 200px at 110% 120%, rgba(79,141,255,.28), transparent)"></div>
       <div class="relative flex flex-col md:flex-row items-center gap-6">
         <button id="logoBtn" class="shrink-0 notch cut-img w-28 h-28 md:w-36 md:h-36 p-2">
-          <img src="logo.png" alt="$MURAI logo">
+          <img src="logo.png" alt="$WURAI logo">
         </button>
         <div class="flex-1 space-y-2">
-          <h1 class="text-4xl md:text-6xl font-black tracking-tight">Murai $MURAI</h1>
+          <h1 class="text-4xl md:text-6xl font-black tracking-tight">WuRai 武睿</h1>
           <p class="text-[var(--ink)]/70 max-w-2xl">
-            Welcome to the Muraiverse. Samurai pigeons teaching crypto with humor and discipline.
-            Deployed on Basechain. Learn in the dojo. Meme on the feed. Liquidity in our veins.
+            Welcome to the path of the Wise Warrior. WuRai (武睿) combines Wu—martial strength and discipline—with Rui—intelligence and wisdom. Where others see only battle, WuRai sees strategy. Where chaos reigns, insight prevails. Deployed on Basechain with honor and precision.
           </p>
-          <p id="tagline" class="text-[var(--ink)]/70 text-sm">Alpha dojo, no whining.</p>
+          <p id="tagline" class="text-[var(--ink)]/70 text-sm">Strength forged in wisdom.</p>
         </div>
         <div class="flex flex-wrap gap-2">
           <a href="#buy" class="btn">buy</a>
@@ -100,7 +114,7 @@
       </div>
     </header>
 
-    <!-- Dojo Video substitui completamente o antigo Chalkboard -->
+    <!-- Dojo Video -->
     <section class="space-y-4">
       <h2 class="text-2xl font-bold">Dojo Video</h2>
       <video src="1.mp4" class="w-full aspect-video notch object-cover" controls muted autoplay loop playsinline></video>
@@ -115,14 +129,13 @@
           <button id="randomBtn" class="btn">summon random</button>
         </div>
       </div>
-
       <div id="grid" class="grid md:grid-cols-4 grid-cols-2 gap-3"></div>
     </section>
 
     <!-- Footer -->
     <footer class="pt-10 pb-16 text-center text-[var(--ink)]/60">
-      <p>Murai $MURAI • Muraiverse on Basechain</p>
-      <p class="text-xs">Generative art with a handmade vibe. This site is 100% functional meme.</p>
+      <p>WuRai $WURAI • 武睿 Wise Warrior on Basechain</p>
+      <p class="text-xs">Where martial prowess meets crypto intelligence. This site is 100% functional wisdom.</p>
     </footer>
   </main>
 
@@ -135,7 +148,7 @@
         <div class="space-y-3">
           <h4 id="modalTitle" class="text-2xl font-bold">Form 01</h4>
           <p id="modalLore" class="text-[var(--ink)]/70 text-sm">
-            This Murai form embodies a Muraiverse archetype. Collect, compare, and create combos with social rarities. Click outside to close.
+            This WuRai form embodies the balance of strength and wisdom. Each variation represents a different path in the warrior's journey. Click outside to close.
           </p>
           <div class="flex gap-2">
             <a href="#buy" class="btn">buy later</a>
@@ -157,45 +170,51 @@
   <script>
     /* Data */
     const TAGLINES = [
-      "Alpha dojo, no whining.",
-      "Basechain or nothing.",
-      "$MURAI turns traders into sensei.",
-      "Half wisdom, half meme, 100% liquidity.",
-      "Roadmap: train, laugh, raid, repeat.",
-      "The Muraiverse is multiform, gas is low.",
-      "Shh, the pigeon is teaching DeFi.",
-      "Samurai honor, degen volatility.",
-      "Pigeon with a katana and a PnL sheet.",
-      "You called? Sensei drops alpha on the board."
+      "Strength forged in wisdom.",
+      "Basechain warrior, crypto sage.",
+      "$WURAI transforms traders into strategists.",
+      "Half martial art, half market insight, 100% discipline.",
+      "Roadmap: train mind, sharpen blade, deploy smart.",
+      "Wu teaches combat. Rui teaches timing.",
+      "The wise warrior knows when to strike.",
+      "Honor in battle, intelligence in trades.",
+      "Warrior with a sword and a strategy.",
+      "You seek alpha? The wise warrior reveals truth."
     ];
+
     const LORE = [
-      "Murai was born in the alley where hash meets honor.",
-      "Every Murai variation is a parallel universe with different leverage.",
-      "The dojo lives on Basechain and the board is on-chain.",
-      "Apprentices receive quests, raids, and utility memes.",
-      "The katana cuts fees. The wings carry liquidity.",
-      "The pigeon sensei watches wallets and rewards discipline.",
-      "Try to rug and you get the eraser to the forehead."
+      "WuRai was born where ancient discipline meets modern markets.",
+      "Every WuRai form represents a different warrior philosophy.",
+      "The dojo exists on Basechain, where wisdom is immutable.",
+      "Disciples learn patience, precision, and profit strategy.",
+      "The blade cuts through FUD. The mind navigates volatility.",
+      "The wise warrior watches charts like a battlefield.",
+      "Try to attack without wisdom and face the consequences.",
+      "Wu is the strength to hold. Rui is knowing when to sell.",
+      "In chaos, the warrior remains calm. In pumps, the sage stays grounded.",
+      "The path of 武睿 is long, but the rewards are eternal."
     ];
+
     const NFT_COUNT = 20;
     const NFT_PATHS = Array.from({ length: NFT_COUNT }, (_, i) => `nft${i+1}.png`);
 
     /* Tagline rotator */
     const taglineEl = document.getElementById('tagline');
     let tagIdx = 0;
-    setInterval(()=>{ tagIdx=(tagIdx+1)%TAGLINES.length; taglineEl.textContent=TAGLINES[tagIdx]; },2500);
+    setInterval(()=>{
+      tagIdx=(tagIdx+1)%TAGLINES.length;
+      taglineEl.textContent=TAGLINES[tagIdx];
+    },2500);
 
     /* Lore */
-    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-    function refreshLore(){
-      const el = document.getElementById('loreP');
-      const tag = document.getElementById('loreTag');
-      if(el) el.textContent = pick(LORE);
-      if(tag) tag.textContent = "-";
+    function pick(arr){
+      return arr[Math.floor(Math.random()*arr.length)];
     }
 
     /* Gallery */
-    const grid=document.getElementById('grid'); let order=[...NFT_PATHS];
+    const grid=document.getElementById('grid');
+    let order=[...NFT_PATHS];
+
     function renderGrid(){
       grid.innerHTML='';
       order.forEach(src=>{
@@ -208,24 +227,41 @@
         grid.appendChild(btn);
       });
     }
-    function shuffle(){ order = order.sort(()=>Math.random()-.5); renderGrid(); }
-    function summonRandom(){ const src=order[Math.floor(Math.random()*order.length)]; openModal(src); }
+
+    function shuffle(){
+      order = order.sort(()=>Math.random()-.5);
+      renderGrid();
+    }
+
+    function summonRandom(){
+      const src=order[Math.floor(Math.random()*order.length)];
+      openModal(src);
+    }
 
     /* Modal */
     const modal=document.getElementById('modal');
     const modalImg=document.getElementById('modalImg');
     const modalTitle=document.getElementById('modalTitle');
     const modalLore=document.getElementById('modalLore');
+
     function openModal(src){
       modalImg.src=src;
       const num=(src.match(/\d+/)||['1'])[0].padStart(2,'0');
       modalTitle.textContent=`Form ${num}`;
       modalLore.textContent=`${pick(LORE)} ${pick(TAGLINES)}`;
-      modal.classList.remove('hidden'); document.body.classList.add('no-scroll');
+      modal.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
     }
-    function closeModal(){ modal.classList.add('hidden'); document.body.classList.remove('no-scroll'); }
+
+    function closeModal(){
+      modal.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
+
     document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click',(e)=>{ if(e.target===modal) closeModal(); });
+    modal.addEventListener('click',(e)=>{
+      if(e.target===modal) closeModal();
+    });
     document.getElementById('mentalShot').addEventListener('click',()=>alert('mental screenshot saved'));
 
     /* Logo click -> random NFT */
@@ -236,13 +272,19 @@
     document.getElementById('randomBtn').addEventListener('click', summonRandom);
 
     /* Preload & init */
-    function preload(urls){ return Promise.all(urls.map(u=>new Promise(res=>{ const im=new Image(); im.onload=im.onerror=()=>res(); im.src=u; }))); }
+    function preload(urls){
+      return Promise.all(urls.map(u=>new Promise(res=>{
+        const im=new Image();
+        im.onload=im.onerror=()=>res();
+        im.src=u;
+      })));
+    }
+
     (async function init(){
-      refreshLore(); renderGrid();
+      renderGrid();
       await preload(['logo.png', ...NFT_PATHS]);
       document.getElementById('preloader').style.display='none';
     })();
   </script>
 </body>
 </html>
-
